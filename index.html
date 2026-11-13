@@ -26,9 +26,19 @@
         }
 
         /* Кастомный неоновый скроллбар */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #000; border: 1px solid #000; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(45deg, #00ffff, #ff00ff); border-radius: 10px; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+            border: 1px solid #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border-radius: 10px;
+        }
 
         /* ==========================================================================
            2. ОБЩИЕ КОМПОНЕНТЫ (Контейнеры, заголовки, кнопки)
@@ -160,7 +170,8 @@
             white-space: nowrap;
         }
 
-        .header-btn:hover, .header-btn.active {
+        .header-btn:hover,
+        .header-btn.active {
             background: #00ffff;
             color: #000;
             box-shadow: 0 0 10px #00ffff;
@@ -194,12 +205,21 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
-        #guess-input:focus { border-color: #3333ff; }
+        #guess-input:focus {
+            border-color: #3333ff;
+        }
 
         /* Прячем стандартные стрелки браузера */
         input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-        input[type=number] { -moz-appearance: textfield; appearance: none; }
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+            appearance: none;
+        }
 
         .custom-arrows {
             position: absolute;
@@ -227,7 +247,10 @@
             transition: all 0.2s ease;
         }
 
-        .arrow-btn:hover { background: #fff; box-shadow: 0 0 10px #fff; }
+        .arrow-btn:hover {
+            background: #fff;
+            box-shadow: 0 0 10px #fff;
+        }
 
         #check-btn {
             background-color: transparent;
@@ -244,7 +267,11 @@
             margin-top: 10px;
         }
 
-        #check-btn:hover { background-color: #00ffff; color: #000; box-shadow: 0 0 20px #00ffff; }
+        #check-btn:hover {
+            background-color: #00ffff;
+            color: #000;
+            box-shadow: 0 0 20px #00ffff;
+        }
 
         #restart-btn {
             display: none;
@@ -260,7 +287,10 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
-        #restart-btn:hover { background-color: #fff; color: #ff00ff; }
+        #restart-btn:hover {
+            background-color: #fff;
+            color: #ff00ff;
+        }
 
         /* Боковые панели (Сложность и Рекорды) */
         .side-panel {
@@ -274,11 +304,33 @@
             animation: fadeInPanel 0.3s ease;
         }
 
-        .side-panel.show { display: block; }
-        .side-panel h3 { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; margin-bottom: 15px; font-size: 18px; }
-        .side-panel ul { list-style: none; text-align: left; font-family: 'Share Tech Mono', monospace; font-size: 13px; }
-        .side-panel li { padding: 8px 0; border-bottom: 1px solid rgba(0, 255, 255, 0.2); }
-        .side-panel li span { color: #00ffff; font-weight: bold; }
+        .side-panel.show {
+            display: block;
+        }
+
+        .side-panel h3 {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .side-panel ul {
+            list-style: none;
+            text-align: left;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+        }
+
+        .side-panel li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .side-panel li span {
+            color: #00ffff;
+            font-weight: bold;
+        }
 
         .diff-list-btn {
             display: block;
@@ -294,181 +346,452 @@
             transition: all 0.3s ease;
         }
 
-        .diff-list-btn:hover, .diff-list-btn.active { background: #00ffff; color: #000; font-weight: bold; }
+        .diff-list-btn:hover,
+        .diff-list-btn.active {
+            background: #00ffff;
+            color: #000;
+            font-weight: bold;
+        }
 
         /* Фильтры для рекордов */
-        .record-filters { display: flex; justify-content: center; gap: 5px; margin-bottom: 15px; }
-        .filter-btn {
-            background: transparent; border: 1px solid #00ffff; color: #00ffff;
-            padding: 4px 8px; border-radius: 3px; cursor: pointer;
-            font-size: 12px; font-family: 'Rajdhani', sans-serif; transition: all 0.2s ease;
+        .record-filters {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 15px;
         }
-        .filter-btn:hover, .filter-btn.active { background: #00ffff; color: #000; font-weight: bold; }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #00ffff;
+            color: #000;
+            font-weight: bold;
+        }
 
         /* ==========================================================================
            4. СООБЩЕНИЯ И СТРЕЛКИ (Подсказки, победа, поражение)
            ========================================================================== */
-        #result-message { margin-top: 15px; font-size: 20px; font-weight: bold; min-height: 30px; font-family: 'Courier New', Courier, monospace; }
+        #result-message {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            min-height: 30px;
+            font-family: 'Courier New', Courier, monospace;
+        }
 
-        .result-content { display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .result-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
 
-        .neon-arrow { display: inline-block; font-size: 1.3em; font-family: 'Share Tech Mono', monospace; font-weight: bold; letter-spacing: -4px; }
-        .neon-arrow.up { color: #ff00ff; text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff; }
-        .neon-arrow.down { color: #00ffff; text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
+        .neon-arrow {
+            display: inline-block;
+            font-size: 1.3em;
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: bold;
+            letter-spacing: -4px;
+        }
 
-        .msg-high { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
-        .msg-low { color: #00ffff; text-shadow: 0 0 10px #00ffff; }
-        .msg-win { color: #00ff00; text-shadow: 0 0 15px #00ff00; animation: pulse 1s infinite; }
-        .msg-lose { color: #ff0000; text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; animation: shake 0.5s infinite; }
+        .neon-arrow.up {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+        }
+
+        .neon-arrow.down {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+        }
+
+        .msg-high {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        .msg-low {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .msg-win {
+            color: #00ff00;
+            text-shadow: 0 0 15px #00ff00;
+            animation: pulse 1s infinite;
+        }
+
+        .msg-lose {
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            animation: shake 0.5s infinite;
+        }
 
         /* ==========================================================================
            5. ЛОГОТИП И МУЗЫКАЛЬНЫЙ ПЛЕЕР
            ========================================================================== */
-        #logoView { display: none; position: relative; min-height: 100vh; padding-top: 80px; }
-
-        .music-player { position: absolute; top: 20px; left: 20px; z-index: 100; text-align: left; }
-
-        .vinyl-collapsed {
-            width: 60px; height: 60px; background: rgba(10, 10, 20, 0.8);
-            border: 2px solid #ff00ff; border-radius: 50%; display: flex;
-            justify-content: center; align-items: center; cursor: pointer;
-            box-shadow: 0 0 15px #ff00ff; position: relative; transition: all 0.3s ease;
+        #logoView {
+            display: none;
+            position: relative;
+            min-height: 100vh;
+            padding-top: 80px;
         }
 
-        .vinyl-collapsed:hover { box-shadow: 0 0 25px #ff00ff; transform: scale(1.05); }
+        .music-player {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            text-align: left;
+        }
 
-        .music-note { color: #00ffff; font-size: 24px; text-shadow: 0 0 10px #00ffff; z-index: 2; }
+        .vinyl-collapsed {
+            width: 60px;
+            height: 60px;
+            background: rgba(10, 10, 20, 0.8);
+            border: 2px solid #ff00ff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 15px #ff00ff;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .vinyl-collapsed:hover {
+            box-shadow: 0 0 25px #ff00ff;
+            transform: scale(1.05);
+        }
+
+        .music-note {
+            color: #00ffff;
+            font-size: 24px;
+            text-shadow: 0 0 10px #00ffff;
+            z-index: 2;
+        }
 
         .record-disc {
-            position: absolute; width: 50px; height: 50px;
+            position: absolute;
+            width: 50px;
+            height: 50px;
             background: repeating-radial-gradient(#111, #111 2px, #222 3px, #222 4px);
-            border-radius: 50%; border: 1px solid #333;
-            animation: spin 2s linear infinite; animation-play-state: paused;
+            border-radius: 50%;
+            border: 1px solid #333;
+            animation: spin 2s linear infinite;
+            animation-play-state: paused;
         }
 
         .record-disc::after {
-            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 10px; height: 10px; background: #ff00ff; border-radius: 50%; box-shadow: 0 0 5px #ff00ff;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background: #ff00ff;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #ff00ff;
         }
 
         .player-expanded {
-            display: none; margin-top: 10px; background: rgba(10, 10, 20, 0.9);
-            border: 1px solid #00ffff; border-radius: 15px; padding: 15px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); align-items: center;
-            gap: 15px; animation: fadeInPanel 0.3s ease; flex-wrap: wrap; width: 200px;
+            display: none;
+            margin-top: 10px;
+            background: rgba(10, 10, 20, 0.9);
+            border: 1px solid #00ffff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            align-items: center;
+            gap: 15px;
+            animation: fadeInPanel 0.3s ease;
+            flex-wrap: wrap;
+            width: 200px;
         }
 
-        .player-expanded.show { display: flex; }
-        .expanded-disc { position: relative; width: 40px; height: 40px; }
-        .player-controls { display: flex; align-items: center; gap: 10px; }
+        .player-expanded.show {
+            display: flex;
+        }
+
+        .expanded-disc {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
         .control-btn {
-            background: transparent; border: 1px solid #00ffff; color: #00ffff;
-            border-radius: 5px; width: 30px; height: 30px; cursor: pointer;
-            display: flex; justify-content: center; align-items: center; transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            border-radius: 5px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
         }
 
-        .control-btn:hover { background: #00ffff; color: #000; box-shadow: 0 0 10px #00ffff; }
+        .control-btn:hover {
+            background: #00ffff;
+            color: #000;
+            box-shadow: 0 0 10px #00ffff;
+        }
 
         .volume-slider {
-            display: none; -webkit-appearance: none; width: 100%; height: 5px;
-            background: #111; border: 1px solid #ff00ff; border-radius: 5px; outline: none; margin-top: 10px;
+            display: none;
+            -webkit-appearance: none;
+            width: 100%;
+            height: 5px;
+            background: #111;
+            border: 1px solid #ff00ff;
+            border-radius: 5px;
+            outline: none;
+            margin-top: 10px;
         }
 
         .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none; width: 12px; height: 12px;
-            background: #ff00ff; border-radius: 50%; cursor: pointer; box-shadow: 0 0 10px #ff00ff;
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #ff00ff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px #ff00ff;
         }
 
-        .volume-slider.show { display: block; }
+        .volume-slider.show {
+            display: block;
+        }
 
         #logoCloseBtn {
-            margin-top: 20px; background: rgba(0, 255, 255, 0.05); border: 2px solid #00ffff;
-            color: #00ffff; padding: 10px 25px; font-size: 16px; border-radius: 50px;
-            cursor: pointer; text-transform: uppercase; letter-spacing: 2px; font-family: 'Rajdhani', sans-serif;
+            margin-top: 20px;
+            background: rgba(0, 255, 255, 0.05);
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 10px 25px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Rajdhani', sans-serif;
         }
-        #logoCloseBtn:hover { background: #00ffff; color: #000; }
+
+        #logoCloseBtn:hover {
+            background: #00ffff;
+            color: #000;
+        }
 
         /* Элементы логотипа (Самурай) */
         .main-text {
-            font-size: clamp(30px, 8vw, 80px); font-weight: 900; letter-spacing: 5px;
-            color: transparent; background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffff);
-            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-            text-transform: uppercase; filter: drop-shadow(0 0 10px rgba(255, 0, 204, 0.5)); transition: all 0.3s ease;
+            font-size: clamp(30px, 8vw, 80px);
+            font-weight: 900;
+            letter-spacing: 5px;
+            color: transparent;
+            background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 204, 0.5));
+            transition: all 0.3s ease;
         }
 
         .roman-numeral {
-            display: block; font-size: 40px; color: #ffffff; letter-spacing: 10px;
-            margin-top: -10px; opacity: 0.8; text-shadow: 0 0 5px #fff;
+            display: block;
+            font-size: 40px;
+            color: #ffffff;
+            letter-spacing: 10px;
+            margin-top: -10px;
+            opacity: 0.8;
+            text-shadow: 0 0 5px #fff;
         }
 
         .text-group:hover .main-text {
-            transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
         }
 
         /* ==========================================================================
            6. АНИМАЦИИ (Кейфреймы)
            ========================================================================== */
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
         }
 
         @keyframes fadeInPanel {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 4px #ff00ff, 0 0 11px #ff00ff, 0 0 19px #ff00ff, 0 0 40px #ff00ff; }
-            20%, 24%, 55% { text-shadow: none; }
+
+            0%,
+            19%,
+            21%,
+            23%,
+            25%,
+            54%,
+            56%,
+            100% {
+                text-shadow: 0 0 4px #ff00ff, 0 0 11px #ff00ff, 0 0 19px #ff00ff, 0 0 40px #ff00ff;
+            }
+
+            20%,
+            24%,
+            55% {
+                text-shadow: none;
+            }
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
         }
 
         @keyframes spin {
-            100% { transform: rotate(360deg); }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Частицы на фоне */
         .particle {
-            position: absolute; width: 4px; height: 4px; background: white;
-            border-radius: 50%; opacity: 0.5; animation: twinkle 2s infinite;
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle 2s infinite;
         }
 
         /* ==========================================================================
            7. АДАПТИВНОСТЬ (Мобильные устройства)
            ========================================================================== */
         @media (max-width: 850px) {
-            .game-layout { flex-direction: column; align-items: center; }
-            .side-panel { width: 100%; max-width: 500px; order: 3; }
-            .game-box { order: 1; }
+            .game-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .side-panel {
+                width: 100%;
+                max-width: 500px;
+                order: 3;
+            }
+
+            .game-box {
+                order: 1;
+            }
         }
 
         @media (max-width: 600px) {
-            .game-title { white-space: normal; font-size: 32px; }
-            .main-text { font-size: 40px; }
-            .cyber-title { white-space: normal; font-size: 18px; }
-            #timer-display { font-size: 14px; }
-            .header-btn { padding: 4px 8px; font-size: 11px; }
+            .game-title {
+                white-space: normal;
+                font-size: 32px;
+            }
+
+            .main-text {
+                font-size: 40px;
+            }
+
+            .cyber-title {
+                white-space: normal;
+                font-size: 18px;
+            }
+
+            #timer-display {
+                font-size: 14px;
+            }
+
+            .header-btn {
+                padding: 4px 8px;
+                font-size: 11px;
+            }
         }
     </style>
 </head>
@@ -481,7 +804,7 @@
     <div class="particle" style="top: 60%; left: 90%; animation-delay: 1.5s;"></div>
 
     <div id="appContainer">
-        
+
         <!-- ========================================== -->
         <!-- ЭКРАН 1: ИГРА                              -->
         <!-- ========================================== -->
@@ -495,7 +818,7 @@
                 </p>
             </div>
             <button class="game-btn" id="openLogoBtn">Нажми меня</button>
-            
+
             <div class="game-layout">
                 <!-- Левая панель: Сложность -->
                 <div id="diff-panel" class="side-panel left-panel">
@@ -510,14 +833,17 @@
                     <h2 class="cyber-title">˙✧˖° SYSTEM: GUESS THE NUMBER</h2>
 
                     <div class="game-controls">
-                        <button id="toggle-diff-btn" class="header-btn" onclick="togglePanel('diff-panel')">Сложность</button>
+                        <button id="toggle-diff-btn" class="header-btn"
+                            onclick="togglePanel('diff-panel')">Сложность</button>
                         <div id="timer-display">Время: 00:00</div>
-                        <button id="toggle-rec-btn" class="header-btn" onclick="togglePanel('records-panel')">Рекорды</button>
+                        <button id="toggle-rec-btn" class="header-btn"
+                            onclick="togglePanel('records-panel')">Рекорды</button>
                     </div>
-                    
+
                     <p id="game-hint" style="color: #aaa; margin-bottom: 10px;">Загадано число от 1 до 100.</p>
-                    <p id="attempts-counter" style="color: #ff00ff; font-weight: bold; margin-bottom: 15px;">Осталось попыток: 10</p>
-                    
+                    <p id="attempts-counter" style="color: #ff00ff; font-weight: bold; margin-bottom: 15px;">Осталось
+                        попыток: 10</p>
+
                     <div class="input-wrapper">
                         <input type="number" id="guess-input" placeholder="Введите число..." min="1" max="100">
                         <div class="custom-arrows">
@@ -525,7 +851,7 @@
                             <button type="button" class="arrow-btn" onclick="stepValue(-1)">▼</button>
                         </div>
                     </div>
-                    
+
                     <button id="check-btn" onclick="checkGuess()">Проверить</button>
                     <div id="result-message"></div>
                     <button id="restart-btn" onclick="initGame()">Перезапустить игру</button>
@@ -534,7 +860,7 @@
                 <!-- Правая панель: Рекорды -->
                 <div id="records-panel" class="side-panel right-panel">
                     <h3>ТОП РЕКОРДОВ</h3>
-                    
+
                     <div class="record-filters">
                         <button class="filter-btn active" onclick="filterRecords(100, this)">Легко</button>
                         <button class="filter-btn" onclick="filterRecords(1000, this)">Средне</button>
@@ -547,7 +873,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- ========================================== -->
         <!-- ЭКРАН 2: ЛОГОТИП И МУЗЫКА                  -->
         <!-- ========================================== -->
@@ -563,16 +889,18 @@
                     <div class="record-disc expanded-disc"></div>
                     <div class="player-controls">
                         <button id="play-btn" class="control-btn" onclick="togglePlay()">▶</button>
-                        <button id="pause-btn" class="control-btn" onclick="togglePlay()" style="display: none;">⏸</button>
+                        <button id="pause-btn" class="control-btn" onclick="togglePlay()"
+                            style="display: none;">⏸</button>
                         <button class="control-btn" onclick="toggleVolume()">🔊</button>
                     </div>
-                    <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.05" value="0.5" oninput="changeVolume(this.value)">
-                    
+                    <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.05" value="0.5"
+                        oninput="changeVolume(this.value)">
+
                     <div style="font-size: 9px; color: #666; margin-top: 5px; text-align: center; width: 100%;">
                         Music: "Ретро-фонк-аура..." by Алекс Морган (FMA) / CC BY
                     </div>
                 </div>
-                
+
                 <audio id="bg-audio" loop>
                     <source src="theme.mp3" type="audio/mpeg">
                 </audio>
@@ -580,7 +908,9 @@
 
             <!-- Сама картинка -->
             <div class="logo-wrapper">
-                <img src="https://i.pinimg.com/736x/de/6f/36/de6f36aaa4592fedd03b7e1ad4ccc291.jpg" style="width: 100%; max-width: 400px; height: auto; margin-bottom: 20px;">
+                <img src="https://i.pinimg.com/736x/de/6f/36/de6f36aaa4592fedd03b7e1ad4ccc291.jpg"
+                    onclick="toggleStarField()"
+                    style="width: 100%; max-width: 400px; height: auto; 	margin-bottom: 20px; cursor: pointer;">
                 <div class="text-group">
                     <div class="main-text">I’m here and</div>
                     <div class="main-text">I came to say…</div>
@@ -628,26 +958,26 @@
             secretNumber = Math.floor(Math.random() * maxNumber) + 1;
             attempts = 0;
             gameStarted = false;
-            
+
             // Сбрасываем таймер
             stopTimer();
             timerDisplay.textContent = 'Время: 00:00';
-            
+
             // Обновляем интерфейс
             gameHint.textContent = `Загадано число от 1 до ${maxNumber}.`;
             attemptsCounter.textContent = `Осталось попыток: ${maxAttempts}`;
             inputField.setAttribute('max', maxNumber);
             inputField.value = '';
-            
+
             // Сбрасываем сообщения
             resultMsg.textContent = '';
             resultMsg.className = '';
-            
+
             // Разблокируем кнопки
             checkBtn.disabled = false;
             inputField.disabled = false;
             restartBtn.style.display = 'none';
-            
+
             inputField.focus();
         }
 
@@ -700,12 +1030,12 @@
 
                 resultMsg.innerHTML = `<div class="result-content">УСПЕХ!<br>Вы угадали за ${attempts} ${word}!<br>Время: ${mins}:${secs}</div>`;
                 resultMsg.className = "msg-win";
-                
+
                 checkBtn.disabled = true;
                 inputField.disabled = true;
                 restartBtn.style.display = 'inline-block';
 
-            // ПРОВЕРКА НА БОЛЬШЕ/МЕНЬШЕ
+                // ПРОВЕРКА НА БОЛЬШЕ/МЕНЬШЕ
             } else if (userGuess > secretNumber) {
                 resultMsg.innerHTML = `<div class="result-content">МЕНЬШЕ <span class="neon-arrow down">&lt;&lt;</span></div>`;
                 resultMsg.className = "msg-low";
@@ -713,7 +1043,7 @@
                 resultMsg.innerHTML = `<div class="result-content">БОЛЬШЕ <span class="neon-arrow up">&gt;&gt;</span></div>`;
                 resultMsg.className = "msg-high";
             }
-            
+
             inputField.focus();
         }
 
@@ -724,7 +1054,7 @@
             clearInterval(timerInterval);
             seconds = 0;
             timerDisplay.textContent = 'Время: 00:00';
-            
+
             timerInterval = setInterval(() => {
                 seconds++;
                 let mins = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -751,7 +1081,7 @@
 
         function setDifficulty(limit, btnElement) {
             maxNumber = limit;
-            
+
             // Настраиваем лимит попыток в зависимости от сложности
             if (limit === 100) maxAttempts = 10;         // Легко
             else if (limit === 1000) maxAttempts = 20;   // Средне
@@ -761,7 +1091,7 @@
             const buttons = document.querySelectorAll('.diff-list-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
-            
+
             initGame();
         }
 
@@ -772,7 +1102,7 @@
             document.getElementById('gameView').style.display = 'none';
             document.getElementById('logoView').style.display = 'block';
         }
-        
+
         function closeLogo() {
             document.getElementById('logoView').style.display = 'none';
             document.getElementById('gameView').style.display = 'block';
@@ -815,15 +1145,15 @@
             // Получаем текущие рекорды или создаем структуру по умолчанию
             let allRecords = JSON.parse(localStorage.getItem('allGameRecords')) || { "100": [], "1000": [], "100000": [] };
             let diffRecords = allRecords[difficulty] || [];
-            
+
             diffRecords.push({ attempts: attempts, time: timeInSeconds });
-            
+
             // Сортируем по попыткам (меньше - лучше), затем по времени
             diffRecords.sort((a, b) => {
                 if (a.attempts !== b.attempts) return a.attempts - b.attempts;
                 return a.time - b.time;
             });
-            
+
             // Оставляем топ-10
             allRecords[difficulty] = diffRecords.slice(0, 10);
             localStorage.setItem('allGameRecords', JSON.stringify(allRecords));
@@ -832,7 +1162,7 @@
         function renderRecords() {
             const list = document.getElementById('records-list');
             list.innerHTML = '';
-            
+
             let allRecords = JSON.parse(localStorage.getItem('allGameRecords')) || {};
             let records = allRecords[currentRecordFilter] || [];
 
@@ -844,7 +1174,7 @@
             records.forEach((rec, index) => {
                 let mins = Math.floor(rec.time / 60).toString().padStart(2, '0');
                 let secs = (rec.time % 60).toString().padStart(2, '0');
-                
+
                 let li = document.createElement('li');
                 li.innerHTML = `<span>#${index + 1}</span> ${rec.attempts} поп. | ${mins}:${secs}`;
                 list.appendChild(li);
@@ -885,9 +1215,37 @@
         // ==========================================================================
         // 8. СЛУШАТЕЛИ СОБЫТИЙ (Инициализация)
         // ==========================================================================
+        // ==========================================================================
+        // 9. ПАСХАЛКА (Звездное небо)
+        // ==========================================================================
+        let starFieldActive = false;
+
+        function toggleStarField() {
+            starFieldActive = !starFieldActive;
+            const logoView = document.getElementById('logoView');
+
+            if (starFieldActive) {
+                // Создаем 40 новых звезд
+                for (let i = 0; i < 40; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'particle dynamic-star'; // Используем твой класс .particle
+                    // Задаем случайные координаты (от 0% до 100% экрана)
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    // Задаем случайную задержку анимации, чтобы они мигали не в такт
+                    star.style.animationDelay = `${Math.random() * 2}s`;
+
+                    logoView.appendChild(star);
+                }
+            } else {
+                // Если кликнули повторно — удаляем звезды
+                const existingStars = document.querySelectorAll('.dynamic-star');
+                existingStars.forEach(star => star.remove());
+            }
+        }
         document.getElementById('openLogoBtn').addEventListener('click', openLogo);
         document.getElementById('logoCloseBtn').addEventListener('click', closeLogo);
-        
+
         // Обработка нажатия Enter (только если игра активна)
         inputField.addEventListener('keypress', function (event) {
             if (event.key === 'Enter' && !inputField.disabled) {
