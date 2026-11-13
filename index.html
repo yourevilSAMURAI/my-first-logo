@@ -1,35 +1,65 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <title>Business card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Site | Logo Style</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #000000; /* Чистый черный цвет */
-            font-family: 'Arial Black', sans-serif;
-            overflow: hidden;
+            min-height: 100vh;
+            background-color: #000000;
+            color: #fff;
+            font-family: 'Rajdhani', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            display: block;
         }
 
-        .container {
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+            border: 1px solid #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border-radius: 10px;
+        }
+
+        #appContainer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-wrapper {
             position: relative;
             text-align: center;
             animation: float 3s ease-in-out infinite;
         }
 
         .main-text {
-            font-size: 80px;
+            font-size: clamp(30px, 8vw, 80px);
             font-weight: 900;
             letter-spacing: 5px;
             color: transparent;
             background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffff);
             -webkit-background-clip: text;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             filter: drop-shadow(0 0 10px rgba(255, 0, 204, 0.5));
             transition: all 0.3s ease;
@@ -45,20 +75,25 @@
             text-shadow: 0 0 5px #fff;
         }
 
-        /* Эффект свечения при наведении */
-        .container:hover .main-text {
+        .text-group:hover .main-text {
             transform: scale(1.05);
             filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
         }
 
-        /* Анимация парения */
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
-        /* Декоративные частицы (фон) */
         .particle {
             position: absolute;
             width: 4px;
@@ -70,27 +105,453 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        #gameView {
+            display: block;
+        }
+
+        .game-title {
+            /* Увеличиваем до 60px, а vw (от ширины экрана) до 5% */
+            font-size: clamp(35px, 5vw, 60px);
+            font-weight: 900;
+            letter-spacing: 1px;
+            /* Вернули чуть-чуть воздуха между буквами */
+            /* ... остальной код остается без изменений ... */
+            color: transparent;
+            background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 204, 0.5));
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            /* Оставляем запрет на перенос */
+        }
+
+        .game-title:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
+        }
+
+        .game-desc {
+            font-size: 24px;
+            /* Уменьшили размер */
+            color: #e0e0ff;
+            /* Вернули приятный светлый цвет */
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .game-btn {
+            background: rgba(0, 255, 255, 0.05);
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 15px 35px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: none;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            font-family: 'Rajdhani', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .game-btn:hover {
+            transform: none;
+            background: #00ffff;
+            color: #000;
+            box-shadow: 0 0 25px #00ffff;
+        }
+
+        .game-box {
+            margin-top: 30px;
+            background: rgba(10, 10, 20, 0.85);
+            border: 1px solid rgba(0, 255, 255, 0.35);
+            border-radius: 15px;
+            padding: 30px 20px;
+            /* Чуть больше отступов внутри */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            max-width: 500px;
+            /* Увеличили размер таблички (было 400px) */
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Courier New', Courier, monospace;
+            /* Тот самый приятный шрифт из оригинала */
+        }
+
+        #guess-input {
+            background-color: #111;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 10px 40px 10px 10px;
+            /* Справа 40px, чтобы текст не лез под стрелки */
+            font-size: 20px;
+            width: 100%;
+            /* Поле занимает всю ширину контейнера */
+            margin-bottom: 0;
+            /* Убрали старый отступ */
+            border-radius: 5px;
+            outline: none;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        #guess-input:focus {
+            border-color: #3333ff;
+            box-shadow: none;
+            color: #00ffff;
+        }
+
+        /* Прячем родные стрелки браузера */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+            appearance: none;
+            padding-right: 35px;
+            /* Оставляем место для наших кастомных стрелок */
+        }
+
+        #check-btn {
+            background-color: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        #check-btn:hover {
+            background-color: #00ffff;
+            color: #000;
+            box-shadow: 0 0 20px #00ffff;
+        }
+
+        #result-message {
+            margin-top: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            min-height: 30px;
+            font-family: 'Courier New', Courier, monospace;
+            /* Применили терминальный шрифт только к сообщениям */
+        }
+
+        .msg-high {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        .msg-low {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .cyber-title {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            font-size: 24px;
+            font-family: 'Rajdhani', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Вернули красивый шрифт */
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            19%,
+            21%,
+            23%,
+            25%,
+            54%,
+            56%,
+            100% {
+                text-shadow:
+                    0 0 4px #ff00ff,
+                    0 0 11px #ff00ff,
+                    0 0 19px #ff00ff,
+                    0 0 40px #ff00ff;
+            }
+
+            20%,
+            24%,
+            55% {
+                text-shadow: none;
+            }
+        }
+
+        .msg-win {
+            color: #00ff00;
+            text-shadow: 0 0 15px #00ff00;
+            animation: pulse 1s infinite;
+            /* Добавили пульсацию */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #restart-btn {
+            display: none;
+            margin-top: 20px;
+            background-color: #ff00ff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 0 15px #ff00ff;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        #restart-btn:hover {
+            background-color: #fff;
+            color: #ff00ff;
+        }
+
+        #logoView {
+            display: none;
+        }
+
+        #logoCloseBtn {
+            margin-top: 20px;
+            background: rgba(0, 255, 255, 0.05);
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 10px 25px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Rajdhani', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #logoCloseBtn:hover {
+            background: #00ffff;
+            color: #000;
+        }
+
+        /* --- НАШИ НОВЫЕ СТРЕЛКИ --- */
+        .input-wrapper {
+            position: relative;
+            width: 85%;
+            /* Ширина контейнера */
+            margin: 0 auto 20px auto;
+            /* Отступ снизу до кнопки "Проверить" */
+        }
+
+        .custom-arrows {
+            position: absolute;
+            right: 5px;
+            /* Прижимаем к правому краю поля ввода */
+            top: 50%;
+            transform: translateY(-50%);
+            /* Идеальное центрирование по вертикали */
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .arrow-btn {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border: none;
+            color: #000;
+            font-size: 10px;
+            width: 20px;
+            height: 14px;
+            border-radius: 3px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            transition: all 0.2s ease;
+        }
+
+        .arrow-btn:hover {
+            background: #fff;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        /* --- МОБИЛЬНАЯ АДАПТАЦИЯ --- */
+        @media (max-width: 600px) {
+            .game-title {
+                /* На телефонах разрешаем заголовку переноситься на новую строку */
+                white-space: normal;
+                font-size: 32px;
+                /* Фиксируем размер для мобилок */
+            }
+
+            .main-text {
+                font-size: 40px;
+                /* Уменьшаем большой текст в логотипе */
+            }
         }
     </style>
 </head>
-<body>
 
-    <!-- Декоративные точки вокруг -->
+<body>
     <div class="particle" style="top: 20%; left: 20%;"></div>
     <div class="particle" style="top: 70%; left: 80%; animation-delay: 0.5s;"></div>
     <div class="particle" style="top: 40%; left: 10%; animation-delay: 1s;"></div>
     <div class="particle" style="top: 60%; left: 90%; animation-delay: 1.5s;"></div>
 
-    <div class="container">
-        <!-- Твоя картинка -->
-	<img src="https://i.pinimg.com/736x/de/6f/36/de6f36aaa4592fedd03b7e1ad4ccc291.jpg" style="width: 100%; max-width: 400px; height: auto; margin-bottom: 20px;">
-        
-        <div class="main-text">I’m here and</div>
-        <div class="main-text">I came to say…</div>
-        <div class="roman-numeral">your evil SAMURAI</div>
+    <div id="appContainer">
+        <div id="gameView">
+            <div class="logo-wrapper">
+                <h1 class="game-title">Мой первый ИИ-проект</h1>
+                <p class="game-desc">
+                    Привет! Я только начинаю свой путь в мире искусственного интеллекта.<br>
+                    Учусь создавать сайты, писать код и общаться с нейросетями.<br>
+                    Это моя первая страница-визитка!
+                </p>
+            </div> <button class="game-btn" id="openLogoBtn">Нажми меня
+            </button>
+            <div class="game-box">
+                <h2 class="cyber-title">˙✧˖° SYSTEM: GUESS THE NUMBER</h2>
+                <p style="color: #aaa; margin-bottom: 20px;">Загадано число от 1 до 100.</p>
+                <div class="input-wrapper">
+                    <input type="number" id="guess-input" placeholder="Введите число..." min="1" max="100">
+                    <div class="custom-arrows">
+                        <button type="button" class="arrow-btn" onclick="stepValue(1)">▲</button>
+                        <button type="button" class="arrow-btn" onclick="stepValue(-1)">▼</button>
+                    </div>
+                </div>
+                <button id="check-btn" onclick="checkGuess()">Проверить</button>
+                <div id="result-message"></div>
+                <button id="restart-btn" onclick="initGame()">Перезапустить игру</button>
+            </div>
+        </div>
+        <div id="logoView">
+            <div class="logo-wrapper">
+                <img src="https://i.pinimg.com/736x/de/6f/36/de6f36aaa4592fedd03b7e1ad4ccc291.jpg"
+                    style="width: 100%; max-width: 400px; height: auto; margin-bottom: 20px;">
+                <div class="text-group">
+                    <div class="main-text">I’m here and</div>
+                    <div class="main-text">I came to say…</div>
+                </div>
+                <div class="roman-numeral">your evil SAMURAI</div>
+            </div>
+            <button id="logoCloseBtn" onclick="closeLogo()">Назад к игре</button>
+        </div>
     </div>
 
+    <script>
+        function openLogo() {
+            document.getElementById('gameView').style.display = 'none';
+            document.getElementById('logoView').style.display = 'block';
+        }
+        function closeLogo() {
+            document.getElementById('logoView').style.display = 'none';
+            document.getElementById('gameView').style.display = 'block';
+        }
+        let secretNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0; // 👈 Наш новый счетчик
+        const inputField = document.getElementById('guess-input');
+        const resultMsg = document.getElementById('result-message');
+        const checkBtn = document.getElementById('check-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        function initGame() {
+            secretNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = 0; // 👈 Обнуляем счетчик при новой игре
+            inputField.value = '';
+            // ... остальной код функции
+            resultMsg.textContent = '';
+            resultMsg.className = '';
+            checkBtn.disabled = false;
+            inputField.disabled = false;
+            restartBtn.style.display = 'none';
+        }
+        function checkGuess() {
+            const userGuess = parseInt(inputField.value);
+
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                resultMsg.textContent = "ОШИБКА: Введите число от 1 до 100";
+                resultMsg.className = "msg-high";
+                return;
+            }
+
+            attempts++; // 👈 Плюс одна попытка (ставим ПОСЛЕ проверки на ошибку)
+            if (userGuess === secretNumber) {
+                // Умное склонение слова "попытка"
+                let word = "попыток";
+                if (attempts % 10 === 1 && attempts % 100 !== 11) {
+                    word = "попытку";
+                } else if ([2, 3, 4].includes(attempts % 10) && ![12, 13, 14].includes(attempts % 100)) {
+                    word = "попытки";
+                }
+
+                resultMsg.textContent = `УСПЕХ! Вы угадали за ${attempts} ${word}!`; // 👈 Выводим счетчик
+                resultMsg.className = "msg-win";
+                checkBtn.disabled = true;
+                inputField.disabled = true;
+                restartBtn.style.display = 'inline-block';
+            } else if (userGuess > secretNumber) {
+                resultMsg.textContent = "МЕНЬШЕ ⬇️";
+                resultMsg.className = "msg-low";
+            } else {
+                resultMsg.textContent = "БОЛЬШЕ ⬆️";
+                resultMsg.className = "msg-high";
+            }
+            inputField.focus();
+        }
+        function stepValue(amount) {
+            if (inputField.disabled) return; // Если игра выиграна, стрелки не работают
+            let currentValue = parseInt(inputField.value) || 0;
+            let newValue = currentValue + amount;
+
+            if (newValue < 1) newValue = 1;
+            if (newValue > 100) newValue = 100;
+
+            inputField.value = newValue;
+            inputField.focus();
+        }
+        document.getElementById('openLogoBtn').addEventListener('click', openLogo);
+        document.getElementById('logoCloseBtn').addEventListener('click', closeLogo);
+        inputField.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                checkGuess();
+            }
+        });
+        window.onload = initGame;
+    </script>
 </body>
+
 </html>
