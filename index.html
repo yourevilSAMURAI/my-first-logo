@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Site | Logo Style</title>
     <style>
+        /* ==========================================================================
+           1. БАЗОВЫЕ СТИЛИ (Сброс, шрифты, фон)
+           ========================================================================== */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
             min-height: 100vh;
             background-color: #000000;
             color: #fff;
@@ -20,13 +23,16 @@
             text-align: center;
             overflow-x: hidden;
             overflow-y: auto;
-            display: block;
         }
 
+        /* Кастомный неоновый скроллбар */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #000000; border: 1px solid #000000; }
+        ::-webkit-scrollbar-track { background: #000; border: 1px solid #000; }
         ::-webkit-scrollbar-thumb { background: linear-gradient(45deg, #00ffff, #ff00ff); border-radius: 10px; }
 
+        /* ==========================================================================
+           2. ОБЩИЕ КОМПОНЕНТЫ (Контейнеры, заголовки, кнопки)
+           ========================================================================== */
         #appContainer {
             max-width: 1100px;
             margin: 0 auto;
@@ -40,58 +46,6 @@
             text-align: center;
             animation: float 3s ease-in-out infinite;
         }
-
-        .main-text {
-            font-size: clamp(30px, 8vw, 80px);
-            font-weight: 900;
-            letter-spacing: 5px;
-            color: transparent;
-            background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 204, 0.5));
-            transition: all 0.3s ease;
-        }
-
-        .roman-numeral {
-            display: block;
-            font-size: 40px;
-            color: #ffffff;
-            letter-spacing: 10px;
-            margin-top: -10px;
-            opacity: 0.8;
-            text-shadow: 0 0 5px #fff;
-        }
-
-        .text-group:hover .main-text {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: twinkle 2s infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-        }
-
-        #gameView { display: block; }
 
         .game-title {
             font-size: clamp(35px, 5vw, 60px);
@@ -131,19 +85,20 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: none;
+            transition: all 0.3s ease;
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
             font-family: 'Rajdhani', sans-serif;
         }
 
         .game-btn:hover {
-            transform: none;
             background: #00ffff;
             color: #000;
             box-shadow: 0 0 25px #00ffff;
         }
 
-        /* --- СТРУКТУРА: 3 КОЛОНКИ --- */
+        /* ==========================================================================
+           3. ИГРОВАЯ ЗОНА (3 колонки, поле ввода, таймер, панели)
+           ========================================================================== */
         .game-layout {
             display: flex;
             justify-content: center;
@@ -155,6 +110,7 @@
             margin-right: auto;
         }
 
+        /* Центральный блок игры */
         .game-box {
             flex: 1;
             max-width: 500px;
@@ -167,78 +123,9 @@
             position: relative;
         }
 
-        /* Боковые панели */
-        .side-panel {
-            width: 220px;
-            background: rgba(10, 10, 20, 0.85);
-            border: 1px solid rgba(0, 255, 255, 0.35);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-            display: none; /* Скрыты по умолчанию */
-            animation: fadeInPanel 0.3s ease;
-        }
-
-        .side-panel.show {
-            display: block;
-        }
-
-        @keyframes fadeInPanel {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .side-panel h3 {
-            color: #ff00ff;
-            text-shadow: 0 0 10px #ff00ff;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-
-        .side-panel ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: left;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 13px;
-        }
-
-        .side-panel li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-        }
-
-        .side-panel li span {
-            color: #00ffff;
-            font-weight: bold;
-        }
-
-        .diff-list-btn {
-            display: block;
-            width: 100%;
-            background: transparent;
-            border: 1px solid #00ffff;
-            color: #00ffff;
-            padding: 8px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Rajdhani', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .diff-list-btn:hover, .diff-list-btn.active {
-            background: #00ffff;
-            color: #000;
-            font-weight: bold;
-        }
-
         .cyber-title {
             color: #ff00ff;
             text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-            margin-top: 0;
             margin-bottom: 20px;
             letter-spacing: 1px;
             font-size: 22px;
@@ -247,28 +134,28 @@
             white-space: nowrap;
         }
 
-        /* Новый ряд с кнопками и таймером */
         .game-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin: 0 auto 15px auto;
-            width: 85%;
+            width: 90%;
             background: rgba(0, 255, 255, 0.05);
             padding: 8px 10px;
             border-radius: 10px;
             border: 1px solid rgba(0, 255, 255, 0.2);
+            gap: 5px;
         }
 
         .header-btn {
             background: transparent;
             border: 1px solid #00ffff;
             color: #00ffff;
-            padding: 5px 15px;
+            padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
             font-family: 'Rajdhani', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.3s ease;
             white-space: nowrap;
         }
@@ -281,10 +168,18 @@
         }
 
         #timer-display {
+            flex: 1;
+            text-align: center;
             color: #ff00ff;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            margin: 0;
+        }
+
+        /* Поле ввода и кастомные стрелки */
+        .input-wrapper {
+            position: relative;
+            width: 85%;
+            margin: 0 auto 20px auto;
         }
 
         #guess-input {
@@ -299,87 +194,12 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
-        #guess-input:focus { border-color: #3333ff; color: #00ffff; }
+        #guess-input:focus { border-color: #3333ff; }
 
+        /* Прячем стандартные стрелки браузера */
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-        input[type=number] { -moz-appearance: textfield; appearance: none; padding-right: 35px; }
-
-        #check-btn {
-            background-color: transparent;
-            border: 2px solid #00ffff;
-            color: #00ffff;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-            font-family: 'Share Tech Mono', monospace;
-            margin-top: 10px;
-        }
-
-        #check-btn:hover { background-color: #00ffff; color: #000; box-shadow: 0 0 20px #00ffff; }
-
-        #result-message {
-            margin-top: 15px;
-            font-size: 20px;
-            font-weight: bold;
-            min-height: 30px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .msg-high { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
-        .msg-low { color: #00ffff; text-shadow: 0 0 10px #00ffff; }
-        .msg-win { color: #00ff00; text-shadow: 0 0 15px #00ff00; animation: pulse 1s infinite; }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        #restart-btn {
-            display: none;
-            margin-top: 20px;
-            background-color: #ff00ff;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-            box-shadow: 0 0 15px #ff00ff;
-            font-family: 'Share Tech Mono', monospace;
-        }
-
-        #restart-btn:hover { background-color: #fff; color: #ff00ff; }
-
-        #logoView { display: none; }
-
-        #logoCloseBtn {
-            margin-top: 20px;
-            background: rgba(0, 255, 255, 0.05);
-            border: 2px solid #00ffff;
-            color: #00ffff;
-            padding: 10px 25px;
-            font-size: 16px;
-            border-radius: 50px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-family: 'Rajdhani', sans-serif;
-        }
-
-        #logoCloseBtn:hover { background: #00ffff; color: #000; }
-
-        .input-wrapper {
-            position: relative;
-            width: 85%;
-            margin: 0 auto 20px auto;
-        }
+        input[type=number] { -moz-appearance: textfield; appearance: none; }
 
         .custom-arrows {
             position: absolute;
@@ -409,61 +229,262 @@
 
         .arrow-btn:hover { background: #fff; box-shadow: 0 0 10px #fff; }
 
-        /* Фильтры рекордов */
-        .record-filters {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            margin-bottom: 15px;
+        #check-btn {
+            background-color: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            font-family: 'Share Tech Mono', monospace;
+            margin-top: 10px;
         }
 
-        .filter-btn {
+        #check-btn:hover { background-color: #00ffff; color: #000; box-shadow: 0 0 20px #00ffff; }
+
+        #restart-btn {
+            display: none;
+            margin-top: 20px;
+            background-color: #ff00ff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 0 15px #ff00ff;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        #restart-btn:hover { background-color: #fff; color: #ff00ff; }
+
+        /* Боковые панели (Сложность и Рекорды) */
+        .side-panel {
+            width: 220px;
+            background: rgba(10, 10, 20, 0.85);
+            border: 1px solid rgba(0, 255, 255, 0.35);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            display: none;
+            animation: fadeInPanel 0.3s ease;
+        }
+
+        .side-panel.show { display: block; }
+        .side-panel h3 { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; margin-bottom: 15px; font-size: 18px; }
+        .side-panel ul { list-style: none; text-align: left; font-family: 'Share Tech Mono', monospace; font-size: 13px; }
+        .side-panel li { padding: 8px 0; border-bottom: 1px solid rgba(0, 255, 255, 0.2); }
+        .side-panel li span { color: #00ffff; font-weight: bold; }
+
+        .diff-list-btn {
+            display: block;
+            width: 100%;
             background: transparent;
             border: 1px solid #00ffff;
             color: #00ffff;
-            padding: 4px 8px;
-            border-radius: 3px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 12px;
             font-family: 'Rajdhani', sans-serif;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
-        .filter-btn:hover, .filter-btn.active {
-            background: #00ffff;
-            color: #000;
-            font-weight: bold;
+        .diff-list-btn:hover, .diff-list-btn.active { background: #00ffff; color: #000; font-weight: bold; }
+
+        /* Фильтры для рекордов */
+        .record-filters { display: flex; justify-content: center; gap: 5px; margin-bottom: 15px; }
+        .filter-btn {
+            background: transparent; border: 1px solid #00ffff; color: #00ffff;
+            padding: 4px 8px; border-radius: 3px; cursor: pointer;
+            font-size: 12px; font-family: 'Rajdhani', sans-serif; transition: all 0.2s ease;
+        }
+        .filter-btn:hover, .filter-btn.active { background: #00ffff; color: #000; font-weight: bold; }
+
+        /* ==========================================================================
+           4. СООБЩЕНИЯ И СТРЕЛКИ (Подсказки, победа, поражение)
+           ========================================================================== */
+        #result-message { margin-top: 15px; font-size: 20px; font-weight: bold; min-height: 30px; font-family: 'Courier New', Courier, monospace; }
+
+        .result-content { display: flex; justify-content: center; align-items: center; gap: 10px; }
+
+        .neon-arrow { display: inline-block; font-size: 1.3em; font-family: 'Share Tech Mono', monospace; font-weight: bold; letter-spacing: -4px; }
+        .neon-arrow.up { color: #ff00ff; text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff; }
+        .neon-arrow.down { color: #00ffff; text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
+
+        .msg-high { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+        .msg-low { color: #00ffff; text-shadow: 0 0 10px #00ffff; }
+        .msg-win { color: #00ff00; text-shadow: 0 0 15px #00ff00; animation: pulse 1s infinite; }
+        .msg-lose { color: #ff0000; text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; animation: shake 0.5s infinite; }
+
+        /* ==========================================================================
+           5. ЛОГОТИП И МУЗЫКАЛЬНЫЙ ПЛЕЕР
+           ========================================================================== */
+        #logoView { display: none; position: relative; min-height: 100vh; padding-top: 80px; }
+
+        .music-player { position: absolute; top: 20px; left: 20px; z-index: 100; text-align: left; }
+
+        .vinyl-collapsed {
+            width: 60px; height: 60px; background: rgba(10, 10, 20, 0.8);
+            border: 2px solid #ff00ff; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; cursor: pointer;
+            box-shadow: 0 0 15px #ff00ff; position: relative; transition: all 0.3s ease;
         }
 
-        /* --- Мобильная адаптация --- */
+        .vinyl-collapsed:hover { box-shadow: 0 0 25px #ff00ff; transform: scale(1.05); }
+
+        .music-note { color: #00ffff; font-size: 24px; text-shadow: 0 0 10px #00ffff; z-index: 2; }
+
+        .record-disc {
+            position: absolute; width: 50px; height: 50px;
+            background: repeating-radial-gradient(#111, #111 2px, #222 3px, #222 4px);
+            border-radius: 50%; border: 1px solid #333;
+            animation: spin 2s linear infinite; animation-play-state: paused;
+        }
+
+        .record-disc::after {
+            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 10px; height: 10px; background: #ff00ff; border-radius: 50%; box-shadow: 0 0 5px #ff00ff;
+        }
+
+        .player-expanded {
+            display: none; margin-top: 10px; background: rgba(10, 10, 20, 0.9);
+            border: 1px solid #00ffff; border-radius: 15px; padding: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); align-items: center;
+            gap: 15px; animation: fadeInPanel 0.3s ease; flex-wrap: wrap; width: 200px;
+        }
+
+        .player-expanded.show { display: flex; }
+        .expanded-disc { position: relative; width: 40px; height: 40px; }
+        .player-controls { display: flex; align-items: center; gap: 10px; }
+
+        .control-btn {
+            background: transparent; border: 1px solid #00ffff; color: #00ffff;
+            border-radius: 5px; width: 30px; height: 30px; cursor: pointer;
+            display: flex; justify-content: center; align-items: center; transition: all 0.2s ease;
+        }
+
+        .control-btn:hover { background: #00ffff; color: #000; box-shadow: 0 0 10px #00ffff; }
+
+        .volume-slider {
+            display: none; -webkit-appearance: none; width: 100%; height: 5px;
+            background: #111; border: 1px solid #ff00ff; border-radius: 5px; outline: none; margin-top: 10px;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none; width: 12px; height: 12px;
+            background: #ff00ff; border-radius: 50%; cursor: pointer; box-shadow: 0 0 10px #ff00ff;
+        }
+
+        .volume-slider.show { display: block; }
+
+        #logoCloseBtn {
+            margin-top: 20px; background: rgba(0, 255, 255, 0.05); border: 2px solid #00ffff;
+            color: #00ffff; padding: 10px 25px; font-size: 16px; border-radius: 50px;
+            cursor: pointer; text-transform: uppercase; letter-spacing: 2px; font-family: 'Rajdhani', sans-serif;
+        }
+        #logoCloseBtn:hover { background: #00ffff; color: #000; }
+
+        /* Элементы логотипа (Самурай) */
+        .main-text {
+            font-size: clamp(30px, 8vw, 80px); font-weight: 900; letter-spacing: 5px;
+            color: transparent; background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffff);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            text-transform: uppercase; filter: drop-shadow(0 0 10px rgba(255, 0, 204, 0.5)); transition: all 0.3s ease;
+        }
+
+        .roman-numeral {
+            display: block; font-size: 40px; color: #ffffff; letter-spacing: 10px;
+            margin-top: -10px; opacity: 0.8; text-shadow: 0 0 5px #fff;
+        }
+
+        .text-group:hover .main-text {
+            transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
+        }
+
+        /* ==========================================================================
+           6. АНИМАЦИИ (Кейфреймы)
+           ========================================================================== */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        @keyframes fadeInPanel {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 4px #ff00ff, 0 0 11px #ff00ff, 0 0 19px #ff00ff, 0 0 40px #ff00ff; }
+            20%, 24%, 55% { text-shadow: none; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Частицы на фоне */
+        .particle {
+            position: absolute; width: 4px; height: 4px; background: white;
+            border-radius: 50%; opacity: 0.5; animation: twinkle 2s infinite;
+        }
+
+        /* ==========================================================================
+           7. АДАПТИВНОСТЬ (Мобильные устройства)
+           ========================================================================== */
         @media (max-width: 850px) {
-            .game-layout {
-                flex-direction: column;
-                align-items: center;
-            }
-            .side-panel {
-                width: 100%;
-                max-width: 500px;
-                order: 3;
-            }
-            .game-box {
-                order: 1;
-            }
+            .game-layout { flex-direction: column; align-items: center; }
+            .side-panel { width: 100%; max-width: 500px; order: 3; }
+            .game-box { order: 1; }
         }
+
         @media (max-width: 600px) {
             .game-title { white-space: normal; font-size: 32px; }
             .main-text { font-size: 40px; }
+            .cyber-title { white-space: normal; font-size: 18px; }
+            #timer-display { font-size: 14px; }
+            .header-btn { padding: 4px 8px; font-size: 11px; }
         }
     </style>
 </head>
 
 <body>
+    <!-- Фоновые частицы -->
     <div class="particle" style="top: 20%; left: 20%;"></div>
     <div class="particle" style="top: 70%; left: 80%; animation-delay: 0.5s;"></div>
     <div class="particle" style="top: 40%; left: 10%; animation-delay: 1s;"></div>
     <div class="particle" style="top: 60%; left: 90%; animation-delay: 1.5s;"></div>
 
     <div id="appContainer">
+        
+        <!-- ========================================== -->
+        <!-- ЭКРАН 1: ИГРА                              -->
+        <!-- ========================================== -->
         <div id="gameView">
             <div class="logo-wrapper">
                 <h1 class="game-title">Мой первый ИИ-проект</h1>
@@ -476,7 +497,7 @@
             <button class="game-btn" id="openLogoBtn">Нажми меня</button>
             
             <div class="game-layout">
-                <!-- Левая панель сложности -->
+                <!-- Левая панель: Сложность -->
                 <div id="diff-panel" class="side-panel left-panel">
                     <h3>СЛОЖНОСТЬ</h3>
                     <button class="diff-list-btn active" onclick="setDifficulty(100, this)">Легко (1-100)</button>
@@ -484,7 +505,7 @@
                     <button class="diff-list-btn" onclick="setDifficulty(100000, this)">Сложно (1-100k)</button>
                 </div>
 
-                <!-- Центральный блок игры -->
+                <!-- Центральный блок: Игра -->
                 <div class="game-box">
                     <h2 class="cyber-title">˙✧˖° SYSTEM: GUESS THE NUMBER</h2>
 
@@ -494,7 +515,8 @@
                         <button id="toggle-rec-btn" class="header-btn" onclick="togglePanel('records-panel')">Рекорды</button>
                     </div>
                     
-                    <p id="game-hint" style="color: #aaa; margin-bottom: 20px;">Загадано число от 1 до 100.</p>
+                    <p id="game-hint" style="color: #aaa; margin-bottom: 10px;">Загадано число от 1 до 100.</p>
+                    <p id="attempts-counter" style="color: #ff00ff; font-weight: bold; margin-bottom: 15px;">Осталось попыток: 10</p>
                     
                     <div class="input-wrapper">
                         <input type="number" id="guess-input" placeholder="Введите число..." min="1" max="100">
@@ -509,7 +531,7 @@
                     <button id="restart-btn" onclick="initGame()">Перезапустить игру</button>
                 </div>
 
-                <!-- Правая панель рекордов -->
+                <!-- Правая панель: Рекорды -->
                 <div id="records-panel" class="side-panel right-panel">
                     <h3>ТОП РЕКОРДОВ</h3>
                     
@@ -520,13 +542,43 @@
                     </div>
 
                     <ul id="records-list">
-                        <!-- Сюда JS будет вставлять рекорды -->
+                        <!-- Сюда JS вставляет рекорды -->
                     </ul>
                 </div>
             </div>
         </div>
         
+        <!-- ========================================== -->
+        <!-- ЭКРАН 2: ЛОГОТИП И МУЗЫКА                  -->
+        <!-- ========================================== -->
         <div id="logoView">
+            <!-- Музыкальный плеер -->
+            <div id="music-player" class="music-player">
+                <div class="vinyl-collapsed" id="vinyl-collapsed" onclick="togglePlayer()">
+                    <div class="record-disc"></div>
+                    <span class="music-note">♫</span>
+                </div>
+
+                <div class="player-expanded" id="player-expanded">
+                    <div class="record-disc expanded-disc"></div>
+                    <div class="player-controls">
+                        <button id="play-btn" class="control-btn" onclick="togglePlay()">▶</button>
+                        <button id="pause-btn" class="control-btn" onclick="togglePlay()" style="display: none;">⏸</button>
+                        <button class="control-btn" onclick="toggleVolume()">🔊</button>
+                    </div>
+                    <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.05" value="0.5" oninput="changeVolume(this.value)">
+                    
+                    <div style="font-size: 9px; color: #666; margin-top: 5px; text-align: center; width: 100%;">
+                        Music: "Ретро-фонк-аура..." by Алекс Морган (FMA) / CC BY
+                    </div>
+                </div>
+                
+                <audio id="bg-audio" loop>
+                    <source src="theme.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+
+            <!-- Сама картинка -->
             <div class="logo-wrapper">
                 <img src="https://i.pinimg.com/736x/de/6f/36/de6f36aaa4592fedd03b7e1ad4ccc291.jpg" style="width: 100%; max-width: 400px; height: auto; margin-bottom: 20px;">
                 <div class="text-group">
@@ -540,64 +592,58 @@
     </div>
 
     <script>
-        // --- Переменные ---
-        let maxNumber = 100;
-        let secretNumber = Math.floor(Math.random() * maxNumber) + 1;
-        let attempts = 0;
-        let timerInterval;
-        let seconds = 0;
-        let gameStarted = false;
-        let currentRecordFilter = 100; // Какой режим сейчас выбран в рекордах
+        // ==========================================================================
+        // 1. ПЕРЕМЕННЫЕ И СОСТОЯНИЕ
+        // ==========================================================================
+        let maxNumber = 100;         // Максимальное число для текущей сложности
+        let maxAttempts = 10;        // Лимит попыток для текущей сложности
+        let secretNumber;            // Загаданное число
+        let attempts = 0;            // Текущее количество попыток
+        let timerInterval;           // Ссылка на интервал таймера
+        let seconds = 0;             // Прошедшее время
+        let gameStarted = false;     // Флаг: началась ли игра (для запуска таймера)
+        let currentRecordFilter = 100; // Текущий фильтр для отображения рекордов
 
-        // --- Элементы DOM ---
+        // Кэш элементов DOM (чтобы не искать их каждый раз)
         const inputField = document.getElementById('guess-input');
         const resultMsg = document.getElementById('result-message');
         const checkBtn = document.getElementById('check-btn');
         const restartBtn = document.getElementById('restart-btn');
         const gameHint = document.getElementById('game-hint');
+        const attemptsCounter = document.getElementById('attempts-counter');
+        const timerDisplay = document.getElementById('timer-display');
 
-        // --- Переключение экранов ---
-        function openLogo() {
-            document.getElementById('gameView').style.display = 'none';
-            document.getElementById('logoView').style.display = 'block';
-        }
-        function closeLogo() {
-            document.getElementById('logoView').style.display = 'none';
-            document.getElementById('gameView').style.display = 'block';
-        }
+        // Элементы плеера
+        const audio = document.getElementById('bg-audio');
+        const playBtn = document.getElementById('play-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const recordDiscs = document.querySelectorAll('.record-disc');
+        const volumeSlider = document.getElementById('volume-slider');
 
-        // --- Таймер ---
-        function startTimer() {
-            clearInterval(timerInterval);
-            seconds = 0;
-            document.getElementById('timer-display').textContent = 'Время: 00:00';
-            
-            timerInterval = setInterval(() => {
-                seconds++;
-                let mins = Math.floor(seconds / 60).toString().padStart(2, '0');
-                let secs = (seconds % 60).toString().padStart(2, '0');
-                document.getElementById('timer-display').textContent = `Время: ${mins}:${secs}`;
-            }, 1000);
-        }
-
-        function stopTimer() {
-            clearInterval(timerInterval);
-        }
-
-        // --- Инициализация игры ---
+        // ==========================================================================
+        // 2. ИНИЦИАЛИЗАЦИЯ И СБРОС ИГРЫ
+        // ==========================================================================
         function initGame() {
+            // Генерируем новое число
             secretNumber = Math.floor(Math.random() * maxNumber) + 1;
             attempts = 0;
             gameStarted = false;
             
+            // Сбрасываем таймер
             stopTimer();
-            document.getElementById('timer-display').textContent = 'Время: 00:00';
-            gameHint.textContent = `Загадано число от 1 до ${maxNumber}.`;
-            inputField.setAttribute('max', maxNumber);
+            timerDisplay.textContent = 'Время: 00:00';
             
+            // Обновляем интерфейс
+            gameHint.textContent = `Загадано число от 1 до ${maxNumber}.`;
+            attemptsCounter.textContent = `Осталось попыток: ${maxAttempts}`;
+            inputField.setAttribute('max', maxNumber);
             inputField.value = '';
+            
+            // Сбрасываем сообщения
             resultMsg.textContent = '';
             resultMsg.className = '';
+            
+            // Разблокируем кнопки
             checkBtn.disabled = false;
             inputField.disabled = false;
             restartBtn.style.display = 'none';
@@ -605,26 +651,46 @@
             inputField.focus();
         }
 
-        // --- Проверка ответа ---
+        // ==========================================================================
+        // 3. ОСНОВНАЯ ИГРОВАЯ ЛОГИКА (Проверка ответа)
+        // ==========================================================================
         function checkGuess() {
             const userGuess = parseInt(inputField.value);
 
+            // Проверка на корректность ввода
             if (isNaN(userGuess) || userGuess < 1 || userGuess > maxNumber) {
-                resultMsg.textContent = `ОШИБКА: Введите число от 1 до ${maxNumber}`;
+                resultMsg.innerHTML = `<div class="result-content">ОШИБКА: Введите число от 1 до ${maxNumber}</div>`;
                 resultMsg.className = "msg-high";
                 return;
             }
 
+            // Запускаем таймер только при первой попытке
             if (!gameStarted) {
                 gameStarted = true;
                 startTimer();
             }
 
             attempts++;
+            attemptsCounter.textContent = `Осталось попыток: ${maxAttempts - attempts}`;
+
+            // ПРОВЕРКА НА ПРОИГРЫШ (Game Over)
+            // Если попытки кончились и число не угадано
+            if (attempts >= maxAttempts && userGuess !== secretNumber) {
+                stopTimer();
+                resultMsg.innerHTML = `<div class="result-content">ИГРА ОКОНЧЕНА!<br>Было загадано: ${secretNumber}</div>`;
+                resultMsg.className = "msg-lose";
+                checkBtn.disabled = true;
+                inputField.disabled = true;
+                restartBtn.style.display = 'inline-block';
+                return; // Останавливаем функцию
+            }
+
+            // ПРОВЕРКА НА ПОБЕДУ
             if (userGuess === secretNumber) {
                 stopTimer();
                 saveRecord(attempts, seconds, maxNumber);
 
+                // Склонение слова "попытка"
                 let word = "попыток";
                 if (attempts % 10 === 1 && attempts % 100 !== 11) { word = "попытку"; }
                 else if ([2, 3, 4].includes(attempts % 10) && ![12, 13, 14].includes(attempts % 100)) { word = "попытки"; }
@@ -632,23 +698,45 @@
                 let mins = Math.floor(seconds / 60).toString().padStart(2, '0');
                 let secs = (seconds % 60).toString().padStart(2, '0');
 
-                resultMsg.innerHTML = `УСПЕХ!<br>Вы угадали за ${attempts} ${word}!<br>Время: ${mins}:${secs}`;
+                resultMsg.innerHTML = `<div class="result-content">УСПЕХ!<br>Вы угадали за ${attempts} ${word}!<br>Время: ${mins}:${secs}</div>`;
                 resultMsg.className = "msg-win";
+                
                 checkBtn.disabled = true;
                 inputField.disabled = true;
                 restartBtn.style.display = 'inline-block';
 
+            // ПРОВЕРКА НА БОЛЬШЕ/МЕНЬШЕ
             } else if (userGuess > secretNumber) {
-                resultMsg.textContent = "МЕНЬШЕ ⬇️";
+                resultMsg.innerHTML = `<div class="result-content">МЕНЬШЕ <span class="neon-arrow down">&lt;&lt;</span></div>`;
                 resultMsg.className = "msg-low";
             } else {
-                resultMsg.textContent = "БОЛЬШЕ ⬆️";
+                resultMsg.innerHTML = `<div class="result-content">БОЛЬШЕ <span class="neon-arrow up">&gt;&gt;</span></div>`;
                 resultMsg.className = "msg-high";
             }
+            
             inputField.focus();
         }
 
-        // --- Стрелочки ---
+        // ==========================================================================
+        // 4. ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ИГРЫ (Таймер, стрелки, сложность)
+        // ==========================================================================
+        function startTimer() {
+            clearInterval(timerInterval);
+            seconds = 0;
+            timerDisplay.textContent = 'Время: 00:00';
+            
+            timerInterval = setInterval(() => {
+                seconds++;
+                let mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+                let secs = (seconds % 60).toString().padStart(2, '0');
+                timerDisplay.textContent = `Время: ${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
         function stepValue(amount) {
             if (inputField.disabled) return;
             let currentValue = parseInt(inputField.value) || 0;
@@ -661,16 +749,35 @@
             inputField.focus();
         }
 
-        // --- Смена сложности ---
         function setDifficulty(limit, btnElement) {
             maxNumber = limit;
+            
+            // Настраиваем лимит попыток в зависимости от сложности
+            if (limit === 100) maxAttempts = 10;         // Легко
+            else if (limit === 1000) maxAttempts = 20;   // Средне
+            else if (limit === 100000) maxAttempts = 30; // Сложно
+
+            // Переключаем активную кнопку
             const buttons = document.querySelectorAll('.diff-list-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
+            
             initGame();
         }
 
-        // --- Панели (Сложность и Рекорды) ---
+        // ==========================================================================
+        // 5. УПРАВЛЕНИЕ ИНТЕРФЕЙСОМ (Панели, экраны)
+        // ==========================================================================
+        function openLogo() {
+            document.getElementById('gameView').style.display = 'none';
+            document.getElementById('logoView').style.display = 'block';
+        }
+        
+        function closeLogo() {
+            document.getElementById('logoView').style.display = 'none';
+            document.getElementById('gameView').style.display = 'block';
+        }
+
         function togglePanel(panelId) {
             const panel = document.getElementById(panelId);
             const isOpen = panel.classList.contains('show');
@@ -693,7 +800,9 @@
             }
         }
 
-        // --- Фильтры рекордов ---
+        // ==========================================================================
+        // 6. РАБОТА С РЕКОРДАМИ (localStorage)
+        // ==========================================================================
         function filterRecords(difficulty, btnElement) {
             currentRecordFilter = difficulty;
             const buttons = document.querySelectorAll('.filter-btn');
@@ -702,23 +811,24 @@
             renderRecords();
         }
 
-        // --- Сохранение рекордов ---
         function saveRecord(attempts, timeInSeconds, difficulty) {
+            // Получаем текущие рекорды или создаем структуру по умолчанию
             let allRecords = JSON.parse(localStorage.getItem('allGameRecords')) || { "100": [], "1000": [], "100000": [] };
             let diffRecords = allRecords[difficulty] || [];
             
             diffRecords.push({ attempts: attempts, time: timeInSeconds });
             
+            // Сортируем по попыткам (меньше - лучше), затем по времени
             diffRecords.sort((a, b) => {
                 if (a.attempts !== b.attempts) return a.attempts - b.attempts;
                 return a.time - b.time;
             });
             
+            // Оставляем топ-10
             allRecords[difficulty] = diffRecords.slice(0, 10);
             localStorage.setItem('allGameRecords', JSON.stringify(allRecords));
         }
 
-        // --- Отрисовка рекордов ---
         function renderRecords() {
             const list = document.getElementById('records-list');
             list.innerHTML = '';
@@ -741,15 +851,51 @@
             });
         }
 
-        // --- Слушатели событий ---
+        // ==========================================================================
+        // 7. МУЗЫКАЛЬНЫЙ ПЛЕЕР
+        // ==========================================================================
+        function togglePlayer() {
+            document.getElementById('player-expanded').classList.toggle('show');
+        }
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.style.display = 'none';
+                pauseBtn.style.display = 'flex';
+                // Запускаем вращение пластинки
+                recordDiscs.forEach(disc => disc.style.animationPlayState = 'running');
+            } else {
+                audio.pause();
+                playBtn.style.display = 'flex';
+                pauseBtn.style.display = 'none';
+                // Ставим на паузу вращение
+                recordDiscs.forEach(disc => disc.style.animationPlayState = 'paused');
+            }
+        }
+
+        function toggleVolume() {
+            volumeSlider.classList.toggle('show');
+        }
+
+        function changeVolume(val) {
+            audio.volume = val;
+        }
+
+        // ==========================================================================
+        // 8. СЛУШАТЕЛИ СОБЫТИЙ (Инициализация)
+        // ==========================================================================
         document.getElementById('openLogoBtn').addEventListener('click', openLogo);
         document.getElementById('logoCloseBtn').addEventListener('click', closeLogo);
         
+        // Обработка нажатия Enter (только если игра активна)
         inputField.addEventListener('keypress', function (event) {
             if (event.key === 'Enter' && !inputField.disabled) {
                 checkGuess();
             }
         });
+
+        // Запуск игры при загрузке страницы
         window.onload = initGame;
     </script>
 </body>
